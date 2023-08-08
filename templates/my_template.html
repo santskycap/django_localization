@@ -1,0 +1,21 @@
+<!-- my_template.html -->
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% translate "This is my title" as my_title %}
+	<title>{% block title %}{{my_title}}{% endblock %}</title>
+</head>
+<body>
+	<a href="{% url 'multi_lang_app:set_language' 'en' %}">English</a>
+	<a href="{% url 'multi_lang_app:set_language' 'fr' %}">French</a>
+	{% get_current_language as language_cod %}
+	<h1>Language Code: {{ language_cod }}</h1>
+	<h1>Language Name: {{ language_cod|language_name }}</h1>
+	<!-- <h1>{% translate 'Welcome to our website!' %}</h1> -->
+	<h1>{% translate message %}</h1>
+</body>
+</html>
+
